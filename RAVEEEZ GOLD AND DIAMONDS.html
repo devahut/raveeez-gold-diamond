@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raveeez Gold & Diamond Jewellery</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #222;
+            color: #d4af37;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background: #111;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .gold-rate {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-top: 10px;
+        }
+        .contact {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ccc;
+        }
+        .shop-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 18px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>Raveeez Gold & Diamond Jewellery</header>
+    <div class="container">
+        <h2>Welcome to Raveeez Jewellery</h2>
+        <p>Located at: Nelluwaya, Erumapetty, Thrissur, Kerala</p>
+        <img src="C:\Users\USER\Downloads\DALL·E 2025-02-15 22.31.39 - A professional black signboard displaying the text 'RAVEEEZ GOLD & DIAMOND' in bold white letters. On the left side of the board, there is a stylized .webp" - A professional black signbo"Raveeez Jewellery Shop" class="shop-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x400?text=Jewellery+Shop';">
+        <div class="gold-rate" id="goldRate">Loading daily gold rate...</div>
+        <h3>Gold Price Trend</h3>
+        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?symbols=COMEX%3AGC1%21" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+        <h3>Our Collection</h3>
+        <ul>
+            <li>Gold Necklaces</li>
+            <li>Diamond Rings</li>
+            <li>Wedding Jewellery</li>
+            <li>Customized Ornaments</li>
+        </ul>
+        <div class="contact">
+            <p>Contact us: <strong>9846 058 150</strong></p>
+        </div>
+    </div>
+    <script>
+        async function fetchGoldRate() {
+            try {
+                const response = await fetch('https://www.goldapi.io/api/XAU/INR', {
+                    headers: { 'x-access-token': 'goldapi-c1btsm76ewa41-io' }
+                });
+                const data = await response.json();
+                
+                if (data.price) {
+                    document.getElementById('goldRate').innerText = `Today's Gold Rate: ₹${data.price.toFixed(2)} per gram`;
+                }
+            } catch (error) {
+                console.error("Error fetching gold rate:", error);
+            }
+        }
+        fetchGoldRate();
+    </script>
+</body>
+</html>
